@@ -21,35 +21,35 @@ class FirstSeeder extends Seeder
     {
         $admin = Role::create(["name" => "Administrator"]);
         $bank_mini = Role::create(["name" => "Bank Mini"]);
-        $kantin = Role::create(["name" => "Kantin"]);
-        $siswa = Role::create(["name" => "Siswa"]);
+        $canteen = Role::create(["name" => "Canteen"]);
+        $student = Role::create(["name" => "Student"]);
 
         User::create([
-            "name" => "Mujahid",
-            "email" => "mujahidrs@gmail.com",
-            "password" => Hash::make("mujahidrs"),
+            "name" => "admin",
+            "email" => "admin@gmail.com",
+            "password" => Hash::make("admin"),
             "role_id" => $admin->id
         ]);
 
         User::create([
-            "name" => "Rui",
-            "email" => "rui@gmail.com",
-            "password" => Hash::make("rui"),
-            "role_id" => $kantin->id
-        ]);
-
-        User::create([
-            "name" => "Azizah",
-            "email" => "azizah@gmail.com",
-            "password" => Hash::make("azizah"),
+            "name" => "Bank Mini",
+            "email" => "bankmini@gmail.com",
+            "password" => Hash::make("bankmini"),
             "role_id" => $bank_mini->id
         ]);
 
-        $wahyu = User::create([
-            "name" => "Wahyu",
-            "email" => "wahyu@gmail.com",
-            "password" => Hash::make("wahyu"),
-            "role_id" => $siswa->id
+        User::create([
+            "name" => "Canteen",
+            "email" => "canteen@gmail.com",
+            "password" => Hash::make("canteen"),
+            "role_id" => $canteen->id
+        ]);
+
+        $fadhil = User::create([
+            "name" => "Fadhil",
+            "email" => "fadhil@gmail.com",
+            "password" => Hash::make("fadhil"),
+            "role_id" => $student->id
         ]);
 
         $piscok = Barang::create([
@@ -88,13 +88,13 @@ class FirstSeeder extends Seeder
         ]);
 
         Saldo::create([
-            "user_id" => $wahyu->id,
+            "user_id" => $fadhil->id,
             "saldo" => 50000
         ]);
 
         //Isi Saldo
         Transaksi::create([
-            "user_id" => $wahyu->id,
+            "user_id" => $fadhil->id,
             "barang_id" => null,
             "jumlah" => 50000,
             "invoice_id" => "SAL_001",
@@ -102,23 +102,5 @@ class FirstSeeder extends Seeder
             "status" => 3
         ]);
 
-        //Belanja
-        // Transaksi::create([
-        //     "user_id" => $wahyu->id,
-        //     "barang_id" => $burger->id,
-        //     "jumlah" => 2,
-        //     "invoice_id" => "INV_001",
-        //     "type" => 2,
-        //     "status" => 1
-        // ]);
-
-        // Transaksi::create([
-        //     "user_id" => $wahyu->id,
-        //     "barang_id" => $oasis->id,
-        //     "jumlah" => 2,
-        //     "invoice_id" => "INV_001",
-        //     "type" => 2,
-        //     "status" => 1
-        // ]);
     }
 }

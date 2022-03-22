@@ -21,34 +21,7 @@ $page = "Jajan";
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">Menu</div>
-
-                <div class="card-body">
-                    <div class="row">
-                        @foreach ($barangs as $barang)
-                            <div class="col col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title">{{ $barang->name }}</div>
-                                    </div>
-                                    {{ $barang->desc }}
-                                    Harga: {{$barang->price}}
-                                    <form method="POST" action="{{ route("addToCart", ["id" => $barang->id]) }}">
-                                        @csrf
-                                        <input type="number" name="jumlah" class="form-control" value="1">
-                                        <input type="hidden" name="barang_id" value="{{ $barang->id }}">
-                                        <button class="btn btn-primary" type="submit">Tambah ke Keranjang</button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Cart {{ count($carts) > 0 ? "#" . $carts[0]->invoice_id : ""}}</div>
 
@@ -86,7 +59,7 @@ $page = "Jajan";
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-header">Checkout {{ count($carts) > 0 ? "#" . $carts[0]->invoice_id : ""}}</div>
 
@@ -121,6 +94,33 @@ $page = "Jajan";
                 </div>
                 <div class="card-footer">
                     <a href="{{ route("bayar") }}" class="btn btn-primary">Bayar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Menu</div>
+
+                <div class="card-body">
+                    <div class="row">
+                        @foreach ($barangs as $barang)
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3">
+                                <div class="card p-3">
+                                    <div class="card-body">
+                                        <div class="card-title"><strong>{{ $barang->name }}</strong></div>
+                                    </div>
+                                    {{ $barang->desc }}
+                                    Harga: {{$barang->price}}
+                                    <form method="POST" action="{{ route("addToCart", ["id" => $barang->id]) }}">
+                                        @csrf
+                                        <input type="number" name="jumlah" class="form-control" value="1">
+                                        <input type="hidden" name="barang_id" value="{{ $barang->id }}">
+                                        <button class="btn btn-primary w-100" type="submit">Tambah ke Keranjang</button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

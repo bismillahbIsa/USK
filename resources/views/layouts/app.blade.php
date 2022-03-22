@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -34,26 +34,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @auth
-                            @if(Auth::user()->role_id === 4)
-                            <li class="nav-item">
-                                <a class="nav-link {{ $page == "Home" ? "active" : "" }}" aria-current="page" href="{{ route("home") }}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ $page == "Top Up" ? "active" : "" }}" href="{{ route("topup") }}">Top Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ $page == "Jajan" ? "active" : "" }}" href="{{ route("transaksi") }}">Jajan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ $page == "Riwayat Transaksi" ? "active" : "" }}" href="">Riwayat Transaksi</a>
-                            </li>
-                            @endif
                             @if(Auth::user()->role_id === 3)
                             <li class="nav-item">
                                 <a class="nav-link {{ $page == "Home" ? "active" : "" }}" aria-current="page" href="{{ route("home") }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ $page == "Menu" ? "active" : "" }}" href="{{ route("menu") }}">Menu</a>
+                                <a class="nav-link {{ $page == "Menu" ? "active" : "" }}" href="{{ route("menu") }}">Nambah Data Barang</a>
                             </li>
                             @endif
                         @endauth
@@ -69,11 +55,11 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -20,16 +20,16 @@ $page = "Home";
                     
                     @if(Auth::user()->role_id === 1)
                     <ul>
-                        <li><a href="{{ route("data_user") }}">Data User</a></li>
-                        <li><a href="{{ route("data_transaksi") }}">Data Transaksi</a></li>
-                        <li><a href="">Riwayat Transaksi</a></li>
+                        <li><a href="{{ route("data_user") }}" class="btn btn-primary mb-2">Data User</a></li>
+                        <li><a href="{{ route("data_transaksi") }}" class="btn btn-primary mb-2">Data Transaksi</a></li>
+                        <li><a href="" class="btn btn-primary mb-2">Riwayat Transaksi</a></li>
                     </ul>
                     @endif
                     @if(Auth::user()->role_id === 4)
                     <ul>
-                        <li><a href="{{ route("topup") }}">Top Up</a></li>
-                        <li><a href="{{ route("transaksi") }}">Jajan</a></li>
-                        <li><a href="">Riwayat Transaksi</a></li>
+                        <li><a href="{{ route("transaksi") }}" class="btn btn-primary mb-2">Belanja</a></li>
+                        <li><a href="{{ route("topup") }}" class="btn btn-primary mb-2">Top Up</a></li>
+                        <li><a href="" class="btn btn-primary mb-2">Riwayat Transaksi</a></li>
                     </ul>
                     @endif
                     @if(Auth::user()->role_id === 2)

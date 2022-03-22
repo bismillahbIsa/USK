@@ -288,6 +288,10 @@ Route::prefix('data_user')->group(function () {
             "role_id" => $request->role_id
         ]);
 
+        $user->saldo()->create([
+            'saldo' => 0
+        ]);
+
         if($user->role_id == 4){
             Saldo::create([
                 "user_id" => $user->id,
